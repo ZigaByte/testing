@@ -1,18 +1,18 @@
 package com.zigabyte.simplelearninggame.entitites;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class Entity {
-	private Vector2 pos;
-	private Vector2 size;
+	protected Vector2 pos;
+	protected Vector2 size;
 
-	private Texture texture;
+	protected TextureRegion texture;
 
 	public Entity(float x, float y) {
 		pos = new Vector2(x, y);
-		size = new Vector2();
+		size = new Vector2(16, 16);
 	}
 
 	public void update() {

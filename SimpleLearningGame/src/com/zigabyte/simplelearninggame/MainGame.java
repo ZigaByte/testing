@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.zigabyte.simplelearninggame.gfx.Images;
+import com.zigabyte.simplelearninggame.input.Input;
 import com.zigabyte.simplelearninggame.level.Level;
 
 public class MainGame implements ApplicationListener {
@@ -25,6 +26,10 @@ public class MainGame implements ApplicationListener {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, w, h);
 		batch = new SpriteBatch();
+
+		// Setting up input
+		Input input = new Input();
+		Gdx.input.setInputProcessor(input);
 
 		// Loading graphics
 		Images.loadImages();
