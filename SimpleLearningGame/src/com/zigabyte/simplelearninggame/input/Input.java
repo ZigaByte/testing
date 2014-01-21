@@ -14,6 +14,12 @@ public class Input implements InputProcessor {
 	public static int y;
 	public static int button;
 
+	private int h;
+
+	public Input(float h2) {
+		h = (int) h2;
+	}
+
 	@Override
 	public boolean keyDown(int keycode) {
 		if (keycode == Keys.UP) up = true;
@@ -40,7 +46,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int buttonPressed) {
 		x = screenX;
-		y = screenY;
+		y = h - screenY;
 		button = buttonPressed;
 		return false;
 	}
@@ -48,7 +54,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int buttonPressed) {
 		x = screenX;
-		y = screenY;
+		y = h - screenY;
 		button = buttonPressed;
 		return false;
 	}
@@ -56,14 +62,14 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		x = screenX;
-		y = screenY;
+		y = h - screenY;
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 		x = screenX;
-		y = screenY;
+		y = h - screenY;
 		return false;
 	}
 

@@ -17,10 +17,17 @@ public class Images {
 	public static TextureRegion testTexture;
 	public static TextureRegion grass;
 	public static TextureRegion lava;
+	public static TextureRegion water;
 	public static TextureRegion stone;
+
+	public static TextureRegion treeTop;
+	public static TextureRegion treeBottom;
+
 	public static TextureRegion player;
 	public static TextureRegion skeleton;
 	public static TextureRegion wizzard;
+
+	public static TextureRegion arrow;
 
 	public static void loadImages() {
 		spritesheet = new Texture(Gdx.files.internal("data/spritesheet.png"));
@@ -37,10 +44,17 @@ public class Images {
 		testTexture = textures[0];
 		grass = textures[w + 15];
 		lava = textures[3 * w + 11];
+		water = textures[2 * w + 6];
 		stone = textures[10];
+
+		treeTop = textures[4 * w];
+		treeBottom = textures[5 * w];
+
 		player = textures[8 * w];
 		skeleton = textures[8 * w + 1];
 		wizzard = textures[8 * w + 2];
+
+		arrow = textures[11 * w];
 
 	}
 }

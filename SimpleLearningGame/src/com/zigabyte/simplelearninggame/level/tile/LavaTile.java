@@ -3,6 +3,7 @@ package com.zigabyte.simplelearninggame.level.tile;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.zigabyte.simplelearninggame.gfx.Images;
+import com.zigabyte.simplelearninggame.gfx.Render;
 import com.zigabyte.simplelearninggame.level.Level;
 
 public class LavaTile extends Tile {
@@ -11,6 +12,6 @@ public class LavaTile extends Tile {
 	protected TextureRegion texture = Images.lava;
 
 	public void render(SpriteBatch batch, int x, int y) {
-		batch.draw(texture, x, y, Level.TILE_SIZE, Level.TILE_SIZE);
+		Render.render(batch, texture, x, y, Level.TILE_SIZE, Level.TILE_SIZE);
 	}
 }

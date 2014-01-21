@@ -14,21 +14,23 @@ public class MainGame implements ApplicationListener {
 	// ******** Rendering variables ******** //
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
+	public static float w;
+	public static float h;
 
 	// ******** Game variables ******** //
 	private Level level;
 
 	@Override
 	public void create() {
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
+		w = Gdx.graphics.getWidth();
+		h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, w, h);
 		batch = new SpriteBatch();
 
 		// Setting up input
-		Input input = new Input();
+		Input input = new Input(h);
 		Gdx.input.setInputProcessor(input);
 
 		// Loading graphics
@@ -47,7 +49,7 @@ public class MainGame implements ApplicationListener {
 	public void render() {
 		level.update();
 
-		Gdx.gl.glClearColor(0, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 		batch.setProjectionMatrix(camera.combined);
