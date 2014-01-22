@@ -2,6 +2,8 @@ package com.zigabyte.simplelearninggame.input;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.zigabyte.simplelearninggame.MainGame;
+import com.zigabyte.simplelearninggame.gfx.Render;
 
 public class Input implements InputProcessor {
 
@@ -12,7 +14,9 @@ public class Input implements InputProcessor {
 
 	public static int x;
 	public static int y;
-	public static int button;
+	public static int xW; // x in game world cords
+	public static int yW; // y in game world cords
+	public static int button = -1;
 
 	private int h;
 
@@ -26,6 +30,7 @@ public class Input implements InputProcessor {
 		if (keycode == Keys.DOWN) down = true;
 		if (keycode == Keys.LEFT) left = true;
 		if (keycode == Keys.RIGHT) right = true;
+
 		return false;
 	}
 
@@ -35,6 +40,7 @@ public class Input implements InputProcessor {
 		if (keycode == Keys.DOWN) down = false;
 		if (keycode == Keys.LEFT) left = false;
 		if (keycode == Keys.RIGHT) right = false;
+
 		return false;
 	}
 
@@ -48,6 +54,8 @@ public class Input implements InputProcessor {
 		x = screenX;
 		y = h - screenY;
 		button = buttonPressed;
+		xW = (int) (x + Render.getXOffset());
+		yW = (int) (y + Render.getYOffset());
 		return false;
 	}
 
@@ -55,7 +63,9 @@ public class Input implements InputProcessor {
 	public boolean touchUp(int screenX, int screenY, int pointer, int buttonPressed) {
 		x = screenX;
 		y = h - screenY;
-		button = buttonPressed;
+		button = -1;
+		xW = (int) (x + Render.getXOffset());
+		yW = (int) (y + Render.getYOffset());
 		return false;
 	}
 
@@ -63,6 +73,8 @@ public class Input implements InputProcessor {
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		x = screenX;
 		y = h - screenY;
+		xW = (int) (x + Render.getXOffset());
+		yW = (int) (y + Render.getYOffset());
 		return false;
 	}
 
@@ -70,6 +82,9 @@ public class Input implements InputProcessor {
 	public boolean mouseMoved(int screenX, int screenY) {
 		x = screenX;
 		y = h - screenY;
+
+		xW = (int) (x + Render.getXOffset());
+		yW = (int) (y + Render.getYOffset());
 		return false;
 	}
 

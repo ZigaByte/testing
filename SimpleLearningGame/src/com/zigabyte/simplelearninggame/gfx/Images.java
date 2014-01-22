@@ -27,7 +27,7 @@ public class Images {
 	public static TextureRegion skeleton;
 	public static TextureRegion wizzard;
 
-	public static TextureRegion arrow;
+	public static TextureRegion smash;
 
 	public static void loadImages() {
 		spritesheet = new Texture(Gdx.files.internal("data/spritesheet.png"));
@@ -54,7 +54,7 @@ public class Images {
 		skeleton = textures[8 * w + 1];
 		wizzard = textures[8 * w + 2];
 
-		arrow = textures[11 * w];
+		smash = textures[11 * w];
 
 	}
 }

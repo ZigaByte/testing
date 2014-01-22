@@ -7,16 +7,18 @@ import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.zigabyte.simplelearninggame.MainGame;
 import com.zigabyte.simplelearninggame.entitites.Entity;
 import com.zigabyte.simplelearninggame.entitites.mobs.Player;
 import com.zigabyte.simplelearninggame.entitites.objects.Tree;
+import com.zigabyte.simplelearninggame.entitites.particle.SmashParticle;
 import com.zigabyte.simplelearninggame.gfx.Render;
+import com.zigabyte.simplelearninggame.input.Input;
 import com.zigabyte.simplelearninggame.level.tile.GrassTile;
 import com.zigabyte.simplelearninggame.level.tile.LavaTile;
 import com.zigabyte.simplelearninggame.level.tile.Tile;
 import com.zigabyte.simplelearninggame.level.tile.WaterTile;
+import com.zigabyte.simplelearninggame.phy.Vector2f;
 
 public class Level {
 
@@ -41,18 +43,18 @@ public class Level {
 
 	public Level() {
 		level = this;
-		w = h = 32;
+		w = h = 64;
 		tiles = new int[w * h];
 		for (int i = 0; i < tiles.length; i++) {
 			tiles[i] = random.nextInt(3) + 1;
 		}
 
-		player = new Player(50, 50);
+		player = new Player(new Vector2f(0, 0));
 		add(player);
 
 		for (int i = 0; i < 150; i++) {
-			Tree tree = new Tree(0 + random.nextInt(40) * 32, 0 + random.nextInt(40) * 32);
-			if (tree.canmove(new Vector2())) add(tree);
+			Tree tree = new Tree(new Vector2f(0 + random.nextInt(40) * 32, 0 + random.nextInt(40) * 32));
+			if (tree.canmove(new Vector2f())) add(tree);
 		}
 	}
 
@@ -66,8 +68,12 @@ public class Level {
 
 	public void update() {
 		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).update();
+			Entity e = entities.get(i);
+			e.update();
+			if (e.isRemoved()) remove(e);
 		}
+
+		// level.add(new SmashParticle(new Vector2f(Input.xW, Input.yW), new Vector2f(), 10));
 	}
 
 	public void render(SpriteBatch batch) {

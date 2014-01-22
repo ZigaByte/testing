@@ -17,4 +17,11 @@ public class Render {
 		yOffset = y;
 	}
 
+	public static float getXOffset() {
+		return xOffset;
+	}
+
+	public static float getYOffset() {
+		return yOffset;
+	}
 }
